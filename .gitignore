@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+.DS_Store
+*.tmp
+es_data/
+postgres_data/
+redis_data/

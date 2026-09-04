@@ -1,0 +1,66 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id            String          @id @default(uuid())
+  email         String          @unique
+  name          String?
+  avatarUrl     String?
+  googleId      String?         @unique
+  createdAt     DateTime        @default(now())
+  emailJobs     EmailJob[]
+  slackSettings SlackSetting[]
+}
+
+model Sender {
+  id          String     @id @default(uuid())
+  email       String     @unique
+  name        String
+  hourlyLimit Int        @default(50)
+  createdAt   DateTime   @default(now())
+  emailJobs   EmailJob[]
+}
+
+model EmailJob {
+  id             String    @id @default(uuid())
+  userId         String?
+  user           User?     @relation(fields: [userId], references: [id])
+  senderId       String?
+  sender         Sender?   @relation(fields: [senderId], references: [id])
+  senderEmail    String
+  recipientEmail String
+  subject        String
+  body           String
+  status         String    @default("SCHEDULED") // SCHEDULED, PROCESSING, SENT, FAILED, RATE_LIMITED
+  scheduledAt    DateTime
+  sentAt         DateTime?
+  etherealUrl    String?
+  errorMessage   String?
+  retryCount     Int       @default(0)
+  batchId        String?
+  createdAt      DateTime  @default(now())
+  updatedAt      DateTime  @updatedAt
+
+  @@index([status])
+  @@index([scheduledAt])
+  @@index([senderEmail])
+  @@index([batchId])
+}
+
+model SlackSetting {
+  id          String   @id @default(uuid())
+  userId      String?  @unique
+  user        User?    @relation(fields: [userId], references: [id])
+  webhookUrl  String?
+  channel     String?
+  accessToken String?
+  isConnected Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
