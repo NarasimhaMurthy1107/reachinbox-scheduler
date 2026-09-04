@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.tabSize": 2,
+  "typescript.tsdk": "backend/node_modules/typescript/lib",
+  "files.exclude": {
+    "**/.git": false,
+    "**/node_modules": false
+  },
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/dist": true
+  }
+}
