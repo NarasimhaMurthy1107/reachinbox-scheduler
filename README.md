@@ -1,41 +1,61 @@
 # ReachInbox Email Scheduler
 
-A full-stack email scheduling application built for the ReachInbox hiring assignment.
+A full-stack email scheduling application built as part of the ReachInbox hiring assignment.
 
-The application allows users to schedule emails, process them through BullMQ workers, apply sender-level rate limits and delays, search emails using Elasticsearch, and view email delivery status through the dashboard.
+The application supports scheduling emails, sending emails through a worker queue, handling multiple senders, rate limiting, searching emails, and tracking email status.
 
 ---
 
 ## Tech Stack
 
 ### Frontend
+
 - React
 - TypeScript
 - Vite
 - Tailwind CSS
 
 ### Backend
+
 - Node.js
 - TypeScript
-- Express.js
-- Prisma ORM
+- Express
+- Prisma
 
-### Infrastructure
+### Database / Infrastructure
+
 - PostgreSQL
 - Redis
 - BullMQ
 - Elasticsearch
-- Docker / Docker Compose
+- Docker
 
 ### Email
-- Ethereal Email / SMTP
 
-### Notifications
-- Slack Webhooks
+- Ethereal SMTP
 
 ---
 
-# How to Run
+## Features
+
+- User login with demo login
+- Google OAuth login
+- Schedule emails for a future time
+- Send emails using BullMQ workers
+- Support multiple sender accounts
+- Per-sender rate limiting
+- Retry failed jobs
+- Cancel scheduled emails
+- Search emails using Elasticsearch
+- View scheduled and sent emails
+- Track completed, failed, delayed and rate-limited jobs
+- Slack webhook integration
+- BullMQ queue monitoring
+- Docker setup for PostgreSQL, Redis and Elasticsearch
+
+---
+
+# Setup Instructions
 
 ## Prerequisites
 
