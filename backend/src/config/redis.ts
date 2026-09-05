@@ -4,6 +4,7 @@ import { config } from './env';
 export const redisConnection = new Redis({
   host: config.redis.host,
   port: config.redis.port,
+  password: config.redis.password,
   maxRetriesPerRequest: null,
   enableReadyCheck: false,
 });

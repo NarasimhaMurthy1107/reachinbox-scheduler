@@ -7,6 +7,7 @@ export const config = {
   redis: {
     host: process.env.REDIS_HOST || 'localhost',
     port: parseInt(process.env.REDIS_PORT || '6379', 10),
+    password: process.env.REDIS_PASSWORD,
   },
   elasticsearchNode: process.env.ELASTICSEARCH_NODE || 'http://localhost:9200',
   jwtSecret: process.env.JWT_SECRET || 'reachinbox_super_secret_jwt_key_2026',

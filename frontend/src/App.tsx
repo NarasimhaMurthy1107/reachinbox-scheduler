@@ -11,11 +11,11 @@ import { SlackModal } from './components/SlackModal';
 import { LoginModal } from './components/LoginModal';
 
 export const App: React.FC = () => {
-  // Auth state
+  
   const [user, setUser] = useState<User | null>(null);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
-  // Tab & data state
+  
   const [activeTab, setActiveTab] = useState<'scheduled' | 'sent'>('scheduled');
   const [scheduledEmails, setScheduledEmails] = useState<EmailJob[]>([]);
   const [sentEmails, setSentEmails] = useState<EmailJob[]>([]);
@@ -23,17 +23,17 @@ export const App: React.FC = () => {
   const [senders, setSenders] = useState<Sender[]>([]);
   const [slackStatus, setSlackStatus] = useState<SlackStatus | null>(null);
 
-  // UI state
+  
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isComposeOpen, setIsComposeOpen] = useState<boolean>(false);
   const [isSlackModalOpen, setIsSlackModalOpen] = useState<boolean>(false);
 
-  // Search state
+  
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isSearching, setIsSearching] = useState<boolean>(false);
   const [searchSource, setSearchSource] = useState<string | undefined>(undefined);
 
-  // Check auth on load
+  
   useEffect(() => {
     const token = localStorage.getItem('reachinbox_token');
     if (token) {
@@ -49,7 +49,7 @@ export const App: React.FC = () => {
     }
   }, []);
 
-  // Fetch dashboard data
+  
   const loadData = useCallback(async () => {
     try {
       const [scheduledRes, sentRes, statsRes, sendersRes, slackRes] = await Promise.all([
@@ -74,12 +74,12 @@ export const App: React.FC = () => {
 
   useEffect(() => {
     loadData();
-    // Auto-refresh every 4 seconds to observe real-time job transitions
+    
     const interval = setInterval(loadData, 4000);
     return () => clearInterval(interval);
   }, [loadData]);
 
-  // Elasticsearch search handler with debounce
+  
   useEffect(() => {
     if (!searchQuery.trim()) {
       setSearchSource(undefined);
