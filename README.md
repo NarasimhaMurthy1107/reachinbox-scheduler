@@ -1,8 +1,10 @@
 # ReachInbox Email Scheduler
 
-A full-stack email scheduling application built as part of the ReachInbox hiring assignment.
+A full-stack email scheduling application built for the ReachInbox hiring assignment.
 
-The application supports scheduling emails, sending emails through a worker queue, handling multiple senders, rate limiting, searching emails, and tracking email status.
+The application allows users to schedule emails, process them through BullMQ workers, apply sender-level rate limits and delays, search emails using Elasticsearch, and view email delivery status through the dashboard.
+
+---
 
 ## Tech Stack
 
@@ -15,60 +17,39 @@ The application supports scheduling emails, sending emails through a worker queu
 ### Backend
 - Node.js
 - TypeScript
-- Express
-- Prisma
+- Express.js
+- Prisma ORM
 
-### Database / Infrastructure
+### Infrastructure
 - PostgreSQL
 - Redis
 - BullMQ
 - Elasticsearch
-- Docker
+- Docker / Docker Compose
 
 ### Email
-- Ethereal SMTP
+- Ethereal Email / SMTP
 
-## Features
+### Notifications
+- Slack Webhooks
 
-- User login with demo login
-- Google OAuth login
-- Schedule emails for a future time
-- Send emails using BullMQ workers
-- Support multiple sender accounts
-- Per-sender rate limiting
-- Retry failed jobs
-- Cancel scheduled emails
-- Search emails using Elasticsearch
-- View scheduled and sent emails
-- Track completed, failed, delayed and rate-limited jobs
-- Slack webhook integration
-- BullMQ queue monitoring
-- Docker setup for PostgreSQL, Redis and Elasticsearch
+---
 
-## Project Structure
+# How to Run
 
-```text
-reachinbox-scheduler/
-│
-├── backend/
-│   ├── prisma/
-│   └── src/
-│       ├── config/
-│       ├── controllers/
-│       ├── middlewares/
-│       ├── queue/
-│       ├── routes/
-│       ├── scripts/
-│       ├── services/
-│       ├── types/
-│       └── workers/
-│
-├── frontend/
-│   ├── public/
-│   └── src/
-│       └── components/
-│
-├── scripts/
-├── docker-compose.yml
-├── sample-leads.csv
-└── README.md
+## Prerequisites
+
+Make sure the following are installed:
+
+- Node.js 18+
+- npm
+- Docker Desktop
+- Git
+
+---
+
+## 1. Clone the Repository
+
+```bash
+git clone https://github.com/NarasimhaMurthy1107/reachinbox-scheduler.git
+cd reachinbox-scheduler
