@@ -8,7 +8,6 @@ export const redisConnection = new Redis({
   maxRetriesPerRequest: null,
   enableReadyCheck: false,
 });
-
 redisConnection.on('connect', () => {
   console.log('✅ Redis connected successfully');
 });
